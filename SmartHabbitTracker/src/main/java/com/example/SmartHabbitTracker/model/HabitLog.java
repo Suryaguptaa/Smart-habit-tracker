@@ -20,11 +20,11 @@ public class HabitLog {
     @Column(nullable = false)
     private LocalDate date;
 
-    // We use a simple String for status ("COMPLETED", "SKIPPED")
+
     @Column(nullable = false)
     private String status = "COMPLETED";
 
-    // --- MANUAL GETTERS & SETTERS ---
+
 
     public Long getId() {
         return id;

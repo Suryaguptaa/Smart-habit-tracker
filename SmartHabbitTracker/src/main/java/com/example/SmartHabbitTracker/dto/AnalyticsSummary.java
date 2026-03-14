@@ -5,14 +5,14 @@ public class AnalyticsSummary {
     private long totalCompleted;
     private String consistencyMessage; // e.g., "Great job!"
 
-    // Constructor
+
     public AnalyticsSummary(int currentStreak, long totalCompleted, String consistencyMessage) {
         this.currentStreak = currentStreak;
         this.totalCompleted = totalCompleted;
         this.consistencyMessage = consistencyMessage;
     }
 
-    // Getters
+
     public int getCurrentStreak() { return currentStreak; }
     public long getTotalCompleted() { return totalCompleted; }
     public String getConsistencyMessage() { return consistencyMessage; }

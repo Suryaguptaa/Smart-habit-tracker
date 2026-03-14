@@ -5,7 +5,7 @@ public class HabitRequest {
     private String description;
     private Long userId;
 
-    // --- MANUAL GETTERS & SETTERS (Required because Lombok is acting up) ---
+
 
     public String getName() {
         return name;

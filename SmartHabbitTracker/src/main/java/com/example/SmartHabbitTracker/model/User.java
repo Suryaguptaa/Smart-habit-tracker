@@ -20,7 +20,7 @@ public class User {
 
     private String password;
 
-    // --- CONSTRUCTORS ---
+
     public User() {
     }
 
@@ -30,7 +30,6 @@ public class User {
         this.password = password;
     }
 
-    // --- GETTERS AND SETTERS (Manual) ---
 
     public Long getId() {
         return id;

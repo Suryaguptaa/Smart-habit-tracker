@@ -1,41 +1,164 @@
-# 🚀 Smart Habit Tracker & Analytics Engine
+# Smart Habit Tracker
 
-A high-performance backend system for tracking daily habits, calculating streaks, and generating behavioral analytics. Built with **Spring Boot** and optimized **MySQL** queries.
+A backend REST API built with Spring Boot for tracking daily habits, calculating streaks, and viewing completion analytics.
 
-## 📌 Key Features
-* **Smart Streak Engine:** Auto-calculates user consistency using an optimized date-traversal algorithm.
-* **Performance Analytics:** Delivers instant completion rates and consistency scores via aggregated SQL queries (O(1) dashboard reads).
-* **Data Integrity:** Prevents duplicate logs using composite unique constraints at the database level.
-* **RESTful Architecture:** Clean separation of concerns with Controller, Service, and Repository layers.
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![Java](https://img.shields.io/badge/Java-17-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-purple?style=flat-square)
 
-## 🛠️ Tech Stack
-* **Backend:** Java 17+, Spring Boot 3.x
-* **Database:** MySQL 8.0 (with Hibernate/JPA)
-* **Tools:** Maven, Postman, Lombok
+> Backend only — no frontend included.
 
-## ⚙️ Setup & Run
-1.  **Clone the repository**
-    ```bash
-    git clone [https://github.com/Suryaguptaa/habit-tracker.git](https://github.com/Suryaguptaa/habit-tracker.git)
-    ```
-2.  **Configure MySQL**
-    * Create a database named `habit_tracker_db`.
-    * Update `src/main/resources/application.properties` with your MySQL username/password.
-3.  **Run the Application**
-    ```bash
-    mvn spring-boot:run
-    ```
+---
 
-## 🔌 API Endpoints
+## What it does
 
-### 👤 User Management
-* `POST /api/users/register` - Create a new account
+Users can register, create habits they want to track, and log their daily completions. The system automatically calculates streaks and provides completion rate analytics per habit. Duplicate logs for the same date are prevented at the database level using composite unique constraints.
 
-### 📅 Habit Management
-* `POST /api/habits` - Create a new habit
-* `GET  /api/habits/user/{id}` - Get all habits for a user
+---
 
-### ⚡ Tracking & Analytics
-* `POST /api/habits/{id}/log` - Mark a habit as completed for a date
-* `GET  /api/habits/{id}/streak` - Get current streak count
-* `GET  /api/habits/{id}/analytics` - Get completion rate and motivational stats
+## Features
+
+- **User registration** — Create a user account
+- **Habit management** — Create and manage habits per user
+- **Daily logging** — Mark a habit as completed for a specific date
+- **Streak calculation** — Automatically calculates how many consecutive days a habit was completed
+- **Analytics** — Completion rate and consistency score per habit
+- **Global error handling** — Consistent error responses across all endpoints
+- **DTO-based responses** — User data is never directly exposed from entities
+
+---
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Java 17 | Core language |
+| Spring Boot 3.x | Backend framework |
+| Spring Data JPA | Database access |
+| Hibernate | ORM implementation |
+| MySQL 8.0 | Relational database |
+| Maven | Build tool |
+
+---
+
+## Run Locally
+
+**Prerequisites:** Java 17, MySQL 8, Maven
+
+```bash
+# Clone the repo
+git clone https://github.com/Suryaguptaa/Smart-habit-tracker.git
+cd Smart-habit-tracker/SmartHabbitTracker
+
+# Create the database
+mysql -u root -p
+CREATE DATABASE habit_tracker_db;
+exit
+
+# Update MySQL credentials in src/main/resources/application.properties
+
+# Run
+mvn spring-boot:run
+```
+
+Server starts at `http://localhost:8080`
+
+---
+
+## API Reference
+
+### Users
+
+```
+POST   /api/users/register        Register a new user
+```
+
+**Request:**
+```json
+{
+  "name": "Surya Gupta",
+  "email": "surya@example.com"
+}
+```
+
+---
+
+### Habits
+
+```
+POST   /api/habits                 Create a new habit
+GET    /api/habits/user/{userId}   Get all habits for a user
+```
+
+**Create habit request:**
+```json
+{
+  "userId": 1,
+  "name": "Morning Run",
+  "description": "Run 3km every morning"
+}
+```
+
+---
+
+### Tracking & Analytics
+
+```
+POST   /api/habits/{id}/log        Mark habit as completed for a date
+GET    /api/habits/{id}/streak     Get current streak count
+GET    /api/habits/{id}/analytics  Get completion rate and stats
+```
+
+**Log habit request:**
+```json
+{
+  "date": "2026-03-15"
+}
+```
+
+**Streak response:**
+```json
+{
+  "habitId": 1,
+  "currentStreak": 7,
+  "longestStreak": 14
+}
+```
+
+**Analytics response:**
+```json
+{
+  "habitId": 1,
+  "totalDaysLogged": 20,
+  "completionRate": "71%",
+  "currentStreak": 7
+}
+```
+
+---
+
+## Project Structure
+
+```
+src/main/java/
+├── entity/         User, Habit, HabitLog
+├── repository/     Spring Data JPA repositories
+├── service/        Business logic, streak calculation
+├── controller/     REST endpoints
+├── dto/            Request and response objects
+└── exception/      GlobalExceptionHandler
+```
+
+---
+
+## Author
+
+**Surya Dev Gupta**
+6th Semester — Lakshmi Narain College of Technology Excellence
+
+---
+
+## License
+
+MIT License — see [LICENSE](LICENSE) for details.

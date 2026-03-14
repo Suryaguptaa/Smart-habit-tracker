@@ -90,11 +90,11 @@ public class HabitService {
     }
 
     public AnalyticsSummary getHabitAnalytics(Long habitId) {
-        // 1. Get the real data
+
         int streak = calculateStreak(habitId);
         Long total = habitLogRepository.countByHabitId(habitId);
 
-        // 2. Generate a "Smart" message based on performance
+
         String message = "Keep going!";
         if (streak > 5) message = "You are on fire! 🔥";
         if (streak > 20) message = "Unstoppable! 🚀";

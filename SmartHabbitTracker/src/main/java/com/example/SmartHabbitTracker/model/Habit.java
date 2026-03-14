@@ -23,7 +23,7 @@ public class Habit {
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    // --- MANUAL GETTERS & SETTERS ---
+
 
     public Long getId() {
         return id;
