@@ -13,6 +13,7 @@ import com.example.SmartHabbitTracker.dto.AnalyticsSummary;
 
 @RestController
 @RequestMapping("/api/habits")
+@CrossOrigin(origins = "http://localhost:5173")
 public class HabitController {
 
     @Autowired

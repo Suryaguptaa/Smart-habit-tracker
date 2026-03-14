@@ -7,7 +7,17 @@ A backend REST API built with Spring Boot for tracking daily habits, calculating
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-purple?style=flat-square)
 
-> Backend only — no frontend included.
+## Screenshots
+
+![Dashboard](screenshots/dashboard.png)
+
+![Habits](screenshots/habits.png)
+
+![Habit Detail](screenshots/habit-expanded.png)
+
+![Profile](screenshots/profile.png)
+
+> Backend only, frontend is currently in progress.
 
 ---
 
