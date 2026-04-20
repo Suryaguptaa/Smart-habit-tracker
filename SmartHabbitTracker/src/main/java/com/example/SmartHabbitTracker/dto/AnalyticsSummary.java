@@ -3,7 +3,7 @@ package com.example.SmartHabbitTracker.dto;
 public class AnalyticsSummary {
     private int currentStreak;
     private long totalCompleted;
-    private String consistencyMessage; // e.g., "Great job!"
+    private String consistencyMessage;
 
 
     public AnalyticsSummary(int currentStreak, long totalCompleted, String consistencyMessage) {

@@ -1,11 +1,12 @@
 package com.example.SmartHabbitTracker.model;
 
 import jakarta.persistence.*;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "users", indexes = {
         @Index(name = "idx_email", columnList = "email")
 })
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "password"})
 public class User {
 
     @Id
@@ -23,6 +24,7 @@ public class User {
 
     public User() {
     }
+
 
     public User(String email, String name, String password) {
         this.email = email;

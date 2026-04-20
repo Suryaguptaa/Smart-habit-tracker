@@ -3,8 +3,8 @@ package com.example.SmartHabbitTracker.dto;
 import java.time.LocalDate;
 
 public class HabitLogRequest {
-    private LocalDate date; // YYYY-MM-DD
-    private String status;  // "COMPLETED"
+    private LocalDate date;
+    private String status;
 
     public LocalDate getDate() {
         return date;

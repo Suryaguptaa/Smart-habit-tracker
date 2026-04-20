@@ -5,3 +5,4 @@ target/
 mvnw
 mvnw.cmd
 help.md
+SmartHabbitTracker/src/main/resources/application.properties

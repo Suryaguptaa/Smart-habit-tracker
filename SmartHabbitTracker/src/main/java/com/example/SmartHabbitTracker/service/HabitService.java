@@ -103,4 +103,9 @@ public class HabitService {
         return new AnalyticsSummary(streak, total, message);
 
     }
+
+    public Habit getHabitById(Long habitId) {
+        return habitRepository.findById(habitId)
+                .orElseThrow(() -> new RuntimeException("Habit not found with id: " + habitId));
+    }
 }
